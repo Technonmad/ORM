@@ -44,4 +44,5 @@ public class UserDao {
         List<User> users = (List<User>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From User").list();
         return users;
     }
+
 }
