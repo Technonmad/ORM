@@ -35,5 +35,24 @@ public class UserService {
         return usersDao.findAll();
     }
 
+    public int getUser(String login) {
+        List<User> users = findAllUsers();
+        for (User currUser : users) {
+            if (currUser.getLogin().equals(login)) {
+                return 0;
+            }
+        }
+    }
+
+
+    public int countUsers() { return usersDao.CountUsers(); }
+
+    public void showUsers(){
+        List<User> users = usersDao.findAll();
+        System.out.println("\tUsers:");
+        for (User user: users) {
+            System.out.println("\t" + Integer.toString(user.getId())+"\t"+user.getLogin());
+        }
+    }
 
 }

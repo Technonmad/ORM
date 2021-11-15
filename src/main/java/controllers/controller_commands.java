@@ -2,6 +2,9 @@ package controllers;
 
 import model.User;
 import services.UserService;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import utils.HibernateSessionFactoryUtil;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +13,7 @@ public class controller_commands {
 
     private UserService userService = new UserService();
     private User user;
-    String login, password;
+    String login, password, comment;
     Scanner in = new Scanner(System.in);
 
     public void waitingOperations(String operation){
@@ -43,6 +46,34 @@ public class controller_commands {
         if(operation.equals("help")){
             System.out.println("\tAvailable commands: login, logout, register, getUsers, changePassword, changeLogin, deleteUser");
             user = null;
+        }
+        if(operation.equals("register")){
+            int usersCount = userService.countUsers();
+
+            System.out.print("\tYour login: ");
+            login = in.nextLine();
+            System.out.print("\tYour password: ");
+            password = in.nextLine();
+            System.out.print("\tAny comments?: ");
+            comment = in.nextLine();
+
+            if (userService.getUser(login) == 0){
+                user = new User();
+                user.setId(usersCount + 1);
+                user.setLogin(login);
+                user.setPassword(password);
+                user.setComments(comment);
+                userService.saveUser(user);
+            }
+            else System.out.print("\tПользователь с такими данными уже существует! ");
+        }
+
+        if(operation.equals("getUsers")){
+
+            userService.showUsers();
+
+
+
         }
     }
 }

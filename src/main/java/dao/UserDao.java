@@ -3,6 +3,7 @@ package dao;
 //import app.entities.User;
 //import app.utils.HibernateSessionFactoryUtil;
 import model.User;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateSessionFactoryUtil;
@@ -43,6 +44,12 @@ public class UserDao {
     public List<User> findAll() {
         List<User> users = (List<User>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From User").list();
         return users;
+    }
+
+    public int CountUsers() {
+        List<User> users = (List<User>)  HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From User").list();
+        int count = users.size();
+        return count;
     }
 
 }

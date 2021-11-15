@@ -9,7 +9,8 @@ public class User {
     private int id;
     private String login;
     private String password;
-    private String сomments;
+    private String comments;
+
 
     @Id
     @Column(name = "id", nullable = false)
@@ -42,13 +43,13 @@ public class User {
     }
 
     @Basic
-    @Column(name = "сomments", nullable = true, length = -1)
-    public String getСomments() {
-        return сomments;
+    @Column(name = "comments", nullable = true, length = -1)
+    public String getComments() {
+        return comments;
     }
 
-    public void setСomments(String сomments) {
-        this.сomments = сomments;
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
     @Override
@@ -56,11 +57,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(сomments, user.сomments);
+        return id == user.id && Objects.equals(login, user.login) && Objects.equals(password, user.password) && Objects.equals(comments, user.comments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password, сomments);
+        return Objects.hash(id, login, password, comments);
     }
 }
