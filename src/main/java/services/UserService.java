@@ -37,11 +37,14 @@ public class UserService {
 
     public int getUser(String login) {
         List<User> users = findAllUsers();
+        int flag = 0;
         for (User currUser : users) {
-            if (currUser.getLogin().equals(login)) {
-                return 0;
+            if (currUser.getLogin().equals(login)){
+                flag = 1;
+                break;
             }
         }
+        return flag;
     }
 
 

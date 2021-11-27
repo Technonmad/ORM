@@ -20,6 +20,7 @@ public class Main {
         controller_commands controller = new controller_commands();
         String command;
         Scanner in = new Scanner(System.in);
+        System.out.println("type 'help' for showing all commands");
         System.out.print("Enter Command: ");
         command = in.nextLine();
 

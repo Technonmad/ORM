@@ -64,13 +64,15 @@ public class controller_commands {
                 user.setPassword(password);
                 user.setComments(comment);
                 userService.saveUser(user);
+                System.out.println("\tДобро пожаловать на борт, " + login + " !");
             }
-            else System.out.print("\tПользователь с такими данными уже существует! ");
+            else System.out.println("\tПользователь с такими данными уже существует! ");
         }
 
         if(operation.equals("getUsers")){
-
-            userService.showUsers();
+            if(user != null)
+                userService.showUsers();
+            else System.out.println("\tДружок-пирожок, это операция для авторизованных пользователей! ");
 
 
 
