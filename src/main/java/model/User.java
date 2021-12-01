@@ -11,6 +11,10 @@ public class User {
     private String password;
     private String comments;
 
+    public User() {
+
+    }
+
 
     @Id
     @Column(name = "id", nullable = false)
@@ -63,5 +67,11 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id, login, password, comments);
+    }
+
+    public User(int id, String name, String password) {
+        this.id = id;
+        this.login = name;
+        this.password = password;
     }
 }
